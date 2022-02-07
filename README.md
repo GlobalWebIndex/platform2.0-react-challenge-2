@@ -6,11 +6,14 @@
 Create an React application for dog lovers which is going to build upon https://dog.ceo/dog-api/ and will have 3 views. 
 
 
-The first view will display random dog images
+The application will include a header with 3 links, each link will point to the following 3 views: 
 
-The second view will display a list of dog breeds accompanied with a breed image.  This list will apply links to the third view. 
 
-The the view will display a list of images for a specific dog breed, including a header with the selected breed. 
+- The first view will display random dog images with the refered dog api
+
+- The second view will display a list of dog breeds accompanied with a breed image.  This list will apply links to the third view. 
+
+- The third view will display a list of images for a specific dog breed, including a header with the selected breed. 
 
 
 Nice to have: Filtering dog breeds based on search input field. 
