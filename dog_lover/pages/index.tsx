@@ -3,6 +3,7 @@ import Head from "next/head";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "../src/theme";
 import TopBar from "../components/topBar";
+import GridGroup from "../components/gridGroup";
 
 const Home: NextPage = () => {
   return (
@@ -17,11 +18,12 @@ const Home: NextPage = () => {
           style={{
             backgroundColor: "#4E40A6",
             padding: "10px",
-            overflow: "hidden",
             backgroundSize: "cover",
+            height: "100vh",
           }}
         >
           <TopBar />
+          <GridGroup />
         </div>
       </ThemeProvider>
     </div>

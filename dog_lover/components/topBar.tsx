@@ -7,9 +7,9 @@ import Grid from "@mui/material/Grid";
 
 const TopBar: FunctionComponent = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 ,height: '10vh'}}>
       <AppBar
-        position="relative"
+        position="static"
         sx={{
           backgroundColor: "#EEEBA6",
           boxShadow: "none",
@@ -18,15 +18,21 @@ const TopBar: FunctionComponent = () => {
           padding: "10px",
         }}
       >
-        <Grid container direction="row" spacing={0.2}>
-          <Grid item xs={0.3} />
-          <Grid item xs={1.5}>
+        <Grid
+          container
+          direction="row"
+          spacing={0.2}
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Grid item xs={1}>
             <Box
               sx={{
                 backgroundColor: "#67A4FF",
                 boxShadow: "none",
                 borderRadius: "30px",
                 padding: "5px",
+                flexGrow: 3,
               }}
             >
               <Typography
@@ -35,9 +41,8 @@ const TopBar: FunctionComponent = () => {
                 align="center"
                 noWrap
                 sx={{
-                  flexGrow: 1,
                   color: "#EEEBA6",
-                  display: { xs: "none", md: "block" },
+                  display: { xs: "none", xl: "block" },
                 }}
               >
                 DogLover
@@ -48,18 +53,23 @@ const TopBar: FunctionComponent = () => {
                 align="center"
                 noWrap
                 sx={{
-                  flexGrow: 1,
                   color: "#EEEBA6",
-                  display: { xs: "block", md: "none" },
+                  display: { lg: "block", xl: "none" },
                 }}
               >
                 DL
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={7} />
-          <Grid item xs>
-            <Grid container direction="row" spacing={0.3}>
+          <Grid item xs={11}>
+            <Grid
+              container
+              direction="row"
+              spacing={0.3}
+              justifyContent="flex-end"
+              alignItems="center"
+              sx={{ flexGrow: 3 }}
+            >
               <Grid item>
                 <Button
                   variant="contained"
@@ -76,7 +86,7 @@ const TopBar: FunctionComponent = () => {
                   }}
                 >
                   <Typography
-                    variant="subtitle1"
+                    variant="subtitle2"
                     sx={{ textTransform: "Capitalize", color: "#EEEBA6" }}
                   >
                     Random Dog Alert
@@ -99,7 +109,7 @@ const TopBar: FunctionComponent = () => {
                   }}
                 >
                   <Typography
-                    variant="subtitle1"
+                    variant="subtitle2"
                     sx={{ textTransform: "Capitalize", color: "#EEEBA6" }}
                   >
                     Breed Selector
@@ -123,7 +133,7 @@ const TopBar: FunctionComponent = () => {
                   }}
                 >
                   <Typography
-                    variant="subtitle1"
+                    variant="subtitle2"
                     sx={{ textTransform: "Capitalize", color: "#EEEBA6" }}
                   >
                     Breed photo truck
