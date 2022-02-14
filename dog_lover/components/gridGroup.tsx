@@ -2,8 +2,9 @@ import React, { FunctionComponent } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import LeftBox from "./leftBox";
+import DogGenerator from "./dogGeneratorBox";
 import RightBox from "./rightBox";
+
 
 const GridGroup: FunctionComponent = () => {
   return (
@@ -13,11 +14,13 @@ const GridGroup: FunctionComponent = () => {
         marginTop: "5px",
       }}
     >
-      <Grid container spacing={1} direction="row">
-        <Grid item xs={6}>
-          <LeftBox />
+      <Grid container spacing={10} direction="row">
+        <Grid item xs={5} md={7.5} />
+        <Grid item xs={7} md={3.5}>
+          <DogGenerator />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item md={1} />
+        <Grid item xs={10}>
           <RightBox />
         </Grid>
       </Grid>

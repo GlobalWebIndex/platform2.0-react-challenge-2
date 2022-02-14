@@ -7,12 +7,15 @@ const RightBox: FunctionComponent = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#7964FC",
-        padding: "10px",
+        background: "rgba(121, 100, 252, 0.7)",
+        border: "1px solid black",
+        padding: "20px",
         width: "100%",
         borderRadius: "30px",
+        height: "100%",
       }}
     ></Box>
   );
 };
 export default RightBox;
+
