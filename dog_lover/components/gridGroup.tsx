@@ -3,8 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import DogGenerator from "./dogGeneratorBox";
-import RightBox from "./rightBox";
-
+import BreedSelectorBox from "./breedSelectorBox";
 
 const GridGroup: FunctionComponent = () => {
   return (
@@ -15,13 +14,13 @@ const GridGroup: FunctionComponent = () => {
       }}
     >
       <Grid container spacing={10} direction="row">
-        <Grid item xs={5} md={7.5} />
-        <Grid item xs={7} md={3.5}>
+        <Grid item lg="auto" xl={7.5} />
+        <Grid item md="auto" xl={3.5}>
           <DogGenerator />
         </Grid>
-        <Grid item md={1} />
-        <Grid item xs={10}>
-          <RightBox />
+        <Grid item lg={1} />
+        <Grid item md="auto">
+          <BreedSelectorBox />
         </Grid>
       </Grid>
     </Box>

@@ -8,6 +8,31 @@ import { NextRouter, useRouter } from "next/router";
 
 const TopBar: FunctionComponent = () => {
   const router: NextRouter = useRouter();
+
+  const oneClickRandomDog = () => {
+    const randomDogButton = document.getElementById("dogGenerator");
+    if (randomDogButton) {
+      randomDogButton.click();
+    }
+  };
+  const oneClickBreedsList = () => {
+    const breedSelectorButton = document.getElementById("whoLetTheDogsOut");
+    if (breedSelectorButton) {
+      breedSelectorButton.click();
+    }
+  };
+
+  const twoClicksBreedsList = () => {
+    router.push("/#breedSelector");
+    oneClickBreedsList();
+    oneClickRandomDog();
+  };
+
+  const twoClicksRandomDog = () => {
+    router.push("/#randomDog");
+    oneClickRandomDog();
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -78,7 +103,7 @@ const TopBar: FunctionComponent = () => {
                   variant="contained"
                   size="small"
                   disableElevation
-                  onClick={() => router.push("/#randomDog")}
+                  onClick={twoClicksRandomDog}
                   sx={{
                     boxShadow: "none",
                     background: "rgba(103, 164, 255, 0.7)",
@@ -103,7 +128,7 @@ const TopBar: FunctionComponent = () => {
                   variant="contained"
                   size="small"
                   disableElevation
-                  onClick={() => router.push("/#contactBox")}
+                  onClick={twoClicksBreedsList}
                   sx={{
                     boxShadow: "none",
                     background: "rgba(103, 164, 255, 0.7)",

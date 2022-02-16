@@ -1,18 +1,32 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import axios, { AxiosResponse } from "axios";
 import Button from "@mui/material/Button";
 // import "aos/dist/aos.css";
 
+interface ImageResponse {
+  message: string;
+}
+const localStorageKey = "dogGeneratorBox";
+
 const DogGenerator: FunctionComponent = () => {
-  const [randomImage, setRandomImage] = useState();
+  const [randomImage, setRandomImage] = useState<ImageResponse[]>([]);
+
+  useEffect(() => {
+    const imageJSON = localStorage.getItem(localStorageKey);
+    if (imageJSON) {
+      setRandomImage(JSON.parse(imageJSON));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, JSON.stringify(randomImage));
+  }, []);
 
   const fetchRandomImages = async () => {
-    const res: AxiosResponse = await axios.get(
+    const res: AxiosResponse = await axios.get<ImageResponse>(
       "https://dog.ceo/api/breeds/image/random"
     );
-    console.log(res.data);
     setRandomImage(res.data);
   };
 
@@ -32,6 +46,7 @@ const DogGenerator: FunctionComponent = () => {
       }}
     >
       <Button
+        id="dogGenerator"
         variant="contained"
         sx={{
           border: "1px solid black",
@@ -58,7 +73,7 @@ const DogGenerator: FunctionComponent = () => {
               maxWidth: { xs: 350, md: 600 },
               border: "1px solid black",
             }}
-            alt="randomImage"
+            alt="If you see me that means that you have to click the button, sorry!"
             src={randomImage.message}
           />
         )}
