@@ -22,6 +22,8 @@ const DogGenerator: FunctionComponent = () => {
   useEffect(() => {
     localStorage.setItem(localStorageKey, JSON.stringify(randomImage));
   }, []);
+  ///the useEffect() functions work but not in the way I wanted them to work,
+  //they only work when the page refreshes while coding, with "npm run dev" on.
 
   const fetchRandomImages = async () => {
     const res: AxiosResponse = await axios.get<ImageResponse>(

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -8,51 +8,37 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import IconButton from "@mui/material/IconButton";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { NextRouter, useRouter } from "next/router";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
+import BreedImageGenerator from "./breedImageGenerator";
+import Link from "next/link";
+import {
+  useVariableBreedContext,
+  useVariableClickedBreedContext,
+  useFunctionHeartContext,
+  useFunctionFetchBreedsContext,
+} from "../src/breedContext";
 
-interface DogBreed {
+export interface DogBreed {
   key: string;
   value: string;
 }
-
-interface ListAllResponse {
+export interface ListAllResponse {
   message: {
     [key: string]: string[];
   };
 }
-
-interface ImageResponse {
+export interface ImageResponse {
   message: string;
+}
+export interface DogBreedImage {
+  breed: string;
 }
 
 const BreedSelectorBox: FunctionComponent = () => {
-  const [breeds, setBreeds] = useState<DogBreed[]>([]);
-  const router: NextRouter = useRouter();
-
-  const fetchBreedsList = async () => {
-    // fetch all breeds. Axios requests can be typed for the response
-    const {
-      data: { message: allBreeds },
-    } = await axios.get<ListAllResponse>("https://dog.ceo/api/breeds/list/all");
-
-    // extract keys from the ListAllResponse.message
-    const keys = Object.keys(allBreeds);
-
-    // resolve images and create DogBreed objects
-    const dogBreeds = await Promise.all(
-      keys.map(async (key) => {
-        const {
-          data: { message: value },
-        } = await axios.get<ImageResponse>(
-          `https://dog.ceo/api/breed/${encodeURIComponent(key)}/images/random`
-        );
-        return { key, value };
-      })
-    );
-
-    setBreeds(dogBreeds);
-    console.log(dogBreeds);
-  };
+  const breeds = useVariableBreedContext();
+  const clickedBreed = useVariableClickedBreedContext();
+  const handleHeartClicked = useFunctionHeartContext();
+  const fetchBreedsList = useFunctionFetchBreedsContext();
 
   return (
     <Box
@@ -124,13 +110,19 @@ const BreedSelectorBox: FunctionComponent = () => {
                   title={breed.key}
                   position="top"
                   actionIcon={
-                    <IconButton
-                      sx={{ color: "white" }}
-                      aria-label={`star ${breed.key}`}
-                      onClick={() => router.push("/#contactBox")}
-                    >
-                      <FavoriteBorderOutlinedIcon />
-                    </IconButton>
+                    <Link href="/#randomBreedImage">
+                      <IconButton
+                        sx={{ color: "white" }}
+                        aria-label={`star ${breed.key}`}
+                        onClick={handleHeartClicked(breed.key)}
+                      >
+                        {clickedBreed[breed.key] ? (
+                          <FavoriteOutlinedIcon />
+                        ) : (
+                          <FavoriteBorderOutlinedIcon />
+                        )}
+                      </IconButton>
+                    </Link>
                   }
                   actionPosition="left"
                 />
@@ -142,3 +134,9 @@ const BreedSelectorBox: FunctionComponent = () => {
   );
 };
 export default BreedSelectorBox;
+
+// {
+//   isOpened && clickedBreed[breed.key] && (
+//     <BreedImageGenerator breed={breed.key} />
+//   );
+// }
