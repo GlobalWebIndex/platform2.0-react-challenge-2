@@ -1,16 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Container, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import { theme } from "../src/theme";
 import TopBar from "../components/topBar";
 import GridGroup from "../components/gridGroup";
 
-
-//type imageData = { message: string; status: string };
-
 const Home: NextPage = () => {
-
-
   return (
     <div>
       <Head>
@@ -29,7 +24,7 @@ const Home: NextPage = () => {
           }}
         >
           <TopBar />
-          <GridGroup  />
+          <GridGroup />
         </div>
       </ThemeProvider>
     </div>
@@ -37,12 +32,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-// Home.getInitialProps = async () => {
-//   const res: AxiosResponse<imageData> = await axios.get(
-//     "https://dog.ceo/api/breeds/image/random"
-//   );
-//   const { data } = res;
-//   setRandomImage(res.data)
-//   return { images: data };
-// };

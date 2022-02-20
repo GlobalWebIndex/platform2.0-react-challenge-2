@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import DogGenerator from "./dogGeneratorBox";
 import BreedSelectorBox from "./breedSelectorBox";
 import BreedImageGenerator from "./breedImageGenerator";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import {
   useVariableBreedContext,
   useVariableClickedBreedContext,
@@ -16,44 +15,41 @@ const GridGroup: FunctionComponent = () => {
   const clickedBreed = useVariableClickedBreedContext();
   const isOpened = useVariableOpenContext();
   const breeds = useVariableBreedContext();
-  
-  const [_document, set_document] = useState([]);
 
-  useEffect(() => set_document(document), []);
+  // const [_document, set_document] = useState([]);
+
+  // useEffect(() => set_document(window.document), []);
 
   return (
-    <Router>
-      <Box
-        sx={{
-          backgroundColor: "transparent",
-          marginTop: "5px",
-        }}
-      >
-        <Grid container spacing={10} direction="row">
-          <Grid item lg="auto" xl={7.5} />
-          <Grid item md="auto" xl={3.5}>
-            <DogGenerator />
-          </Grid>
-          <Grid item lg={1} />
-          <Grid item md="auto">
-            <BreedSelectorBox />
-          </Grid>
-          <Grid item lg="auto" xl={7.5} />
-          <Grid item md="auto" xl={3.5}>
-            {breeds &&
-              breeds.map((breed) => {
-                isOpened && clickedBreed[breed.key] && (
-                  <Route
-                    path={"/#randomBreedImage"}
-                    element={<BreedImageGenerator breed={breed.key} />}
-                  />
-                );
-              })}
-          </Grid>
+    <Box
+      sx={{
+        backgroundColor: "transparent",
+        marginTop: "5px",
+      }}
+    >
+      <Grid container spacing={10} direction="row">
+        <Grid item lg="auto" xl={7.5} />
+        <Grid item md="auto" xl={3.5}>
+          <DogGenerator />
         </Grid>
-      </Box>
-    </Router>
+        <Grid item lg={1} />
+        <Grid item md="auto">
+          <BreedSelectorBox />
+        </Grid>
+        <Grid item lg="auto" xl={6.5} />
+        <Grid item md="auto">
+          {breeds &&
+            breeds.map((breed) => {
+              return (
+                clickedBreed[breed.key] &&
+                isOpened && (
+                  <BreedImageGenerator breed={breed.key} key={breed.key} />
+                )
+              );
+            })}
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 export default GridGroup;
-

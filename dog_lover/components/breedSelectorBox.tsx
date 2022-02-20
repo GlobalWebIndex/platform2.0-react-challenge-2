@@ -1,5 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
-import axios from "axios";
+import React, { FunctionComponent } from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -9,7 +8,6 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import IconButton from "@mui/material/IconButton";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
-import BreedImageGenerator from "./breedImageGenerator";
 import Link from "next/link";
 import {
   useVariableBreedContext,
@@ -80,7 +78,7 @@ const BreedSelectorBox: FunctionComponent = () => {
           },
           "&::-webkit-scrollbar-track": {
             background: "rgba(103, 164, 255, 0.7)",
-            borderLeft: "1px solid black",
+            
           },
           "&::-webkit-scrollbar-thumb": {
             backgroundColor: "#EEEBA6",
@@ -134,9 +132,3 @@ const BreedSelectorBox: FunctionComponent = () => {
   );
 };
 export default BreedSelectorBox;
-
-// {
-//   isOpened && clickedBreed[breed.key] && (
-//     <BreedImageGenerator breed={breed.key} />
-//   );
-// }

@@ -5,9 +5,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { NextRouter, useRouter } from "next/router";
+import { useVariableOpenContext } from "../src/breedContext";
 
 const TopBar: FunctionComponent = () => {
   const router: NextRouter = useRouter();
+  const isOpened = useVariableOpenContext();
 
   const oneClickRandomDog = () => {
     const randomDogButton = document.getElementById("dogGenerator");
@@ -153,8 +155,8 @@ const TopBar: FunctionComponent = () => {
                   variant="contained"
                   size="small"
                   disableElevation
-                  disabled
-                  onClick={() => router.push("/#contactBox")}
+                  disabled={!isOpened}
+                  onClick={() => router.push("/#randomBreedImage")}
                   sx={{
                     boxShadow: "none",
                     background: "rgba(103, 164, 255, 0.7)",

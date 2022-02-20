@@ -11,7 +11,7 @@ const ClickedBreedContext = React.createContext({} as DogBreedImage[]);
 const BreedContext = React.createContext({} as DogBreed[]);
 const HeartContextUpdate = React.createContext({} as any);
 const FetchBreedsContextUpdate = React.createContext({} as any);
-const OpenContext = React.createContext({} as any);
+const OpenContext = React.createContext({} as boolean);
 
 export const useVariableBreedContext = () => {
   return useContext(BreedContext);
