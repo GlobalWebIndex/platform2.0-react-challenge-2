@@ -1,6 +1,5 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { FunctionComponent } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import DogGenerator from "./dogGeneratorBox";
 import BreedSelectorBox from "./breedSelectorBox";
@@ -15,10 +14,6 @@ const GridGroup: FunctionComponent = () => {
   const clickedBreed = useVariableClickedBreedContext();
   const isOpened = useVariableOpenContext();
   const breeds = useVariableBreedContext();
-
-  // const [_document, set_document] = useState([]);
-
-  // useEffect(() => set_document(window.document), []);
 
   return (
     <Box

@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import axios, { AxiosResponse } from "axios";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -28,9 +27,6 @@ const BreedImageGenerator: FunctionComponent<ImageProps[]> = ({ breed }) => {
   return (
     <Box
       id="randomBreedImage"
-      // data-aos="fade-up"
-      // data-aos-anchor="#welcomeMsg"
-      // data-aos-anchor-placement="top-top"
       sx={{
         background: "rgba(103, 164, 255, 0.7)",
         border: "1px solid black",
