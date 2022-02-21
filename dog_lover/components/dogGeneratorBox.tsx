@@ -54,6 +54,9 @@ const DogGenerator: FunctionComponent = () => {
           border: "1px solid black",
           background: "rgba(121, 100, 252, 0.7)",
           marginBottom: "10px",
+          "&:hover": {
+            backgroundColor: "#7964FC",
+          },
         }}
         onClick={fetchRandomImages}
       >

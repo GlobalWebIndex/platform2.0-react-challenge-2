@@ -11,13 +11,15 @@ interface ImageResponse {
 interface ImageProps {
   breed: string;
 }
-const BreedImageGenerator: FunctionComponent<ImageProps[]> = ({ breed }) => {
+const BreedImageGenerator: FunctionComponent<ImageProps> = ({
+  breed,
+}: ImageProps) => {
   const [randomImages, setRandomImage] = useState<ImageResponse[]>([]);
 
   useEffect(() => {
     const fetchRandomImages = async () => {
       const res: AxiosResponse = await axios.get<ImageResponse[]>(
-        `https://dog.ceo/api/breed/${breed}/images/random/4`
+        `https://dog.ceo/api/breed/${breed}/images/random/6`
       );
       setRandomImage(res.data.message);
     };
@@ -38,6 +40,7 @@ const BreedImageGenerator: FunctionComponent<ImageProps[]> = ({ breed }) => {
     >
       <Box>
         <ImageList
+          gap={1}
           sx={{
             width: 500,
             height: 500,
@@ -58,11 +61,11 @@ const BreedImageGenerator: FunctionComponent<ImageProps[]> = ({ breed }) => {
             <ListSubheader
               component="div"
               sx={{
+                fontSize: "1rem",
                 color: "#EEEBA6",
-                background:
-                  "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
-                  "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+                background: "rgba(121, 100, 252, 0.7)",
                 textTransform: "Capitalize",
+                borderBottom: "1px solid black",
               }}
             >
               {breed}
