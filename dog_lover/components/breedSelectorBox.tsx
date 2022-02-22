@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -43,6 +43,10 @@ const BreedSelectorBox: FunctionComponent = () => {
   const fetchBreedsList = useFunctionFetchBreedsContext();
   const query = useVariableQueryContext();
   const filterList = useFunctionQueryContext();
+
+  useEffect(() => {
+    fetchBreedsList();
+  }, []);
 
   return (
     <Box

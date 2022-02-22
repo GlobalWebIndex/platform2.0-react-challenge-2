@@ -4,26 +4,28 @@ import axios, { AxiosResponse } from "axios";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ListSubheader from "@mui/material/ListSubheader";
+import { ImageResponse } from "../components/breedSelectorBox";
 
-interface ImageResponse {
-  message: string;
-}
 interface ImageProps {
   breed: string;
 }
 const BreedImageGenerator: FunctionComponent<ImageProps> = ({
   breed,
 }: ImageProps) => {
-  const [randomImages, setRandomImage] = useState<ImageResponse[]>([]);
+  const [randomImages, setRandomImages] = useState<ImageResponse[]>([]);
 
   useEffect(() => {
-    const fetchRandomImages = async () => {
-      const res: AxiosResponse = await axios.get<ImageResponse[]>(
-        `https://dog.ceo/api/breed/${breed}/images/random/6`
-      );
-      setRandomImage(res.data.message);
-    };
-    fetchRandomImages();
+    try {
+      const fetchRandomImages = async () => {
+        const res: AxiosResponse = await axios.get<ImageResponse[]>(
+          `https://dog.ceo/api/breed/${breed}/images/random/6`
+        );
+        setRandomImages(res.data.message);
+      };
+      fetchRandomImages();
+    } catch (err) {
+      console.error(err);
+    }
   }, []);
 
   return (

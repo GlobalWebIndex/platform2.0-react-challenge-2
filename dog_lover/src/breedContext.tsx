@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import {
   DogBreed,
   ListAllResponse,
@@ -14,6 +14,8 @@ const FetchBreedsContextUpdate = React.createContext({} as any);
 const OpenContext = React.createContext({} as boolean);
 const QueryContext = React.createContext({} as any);
 const QueryContextUpdate = React.createContext({} as any);
+const RandomImageContext = React.createContext({} as ImageResponse[]);
+const RandomImageContextUpdate = React.createContext({} as any);
 
 export const useVariableBreedContext = () => {
   return useContext(BreedContext);
@@ -36,12 +38,19 @@ export const useFunctionFetchBreedsContext = () => {
 export const useFunctionQueryContext = () => {
   return useContext(QueryContextUpdate);
 };
+export const useVariableRandomImageContext = () => {
+  return useContext(RandomImageContext);
+};
+export const useFunctionRandomImageContext = () => {
+  return useContext(RandomImageContextUpdate);
+};
 
 export const BreedProvider = ({ children }: { children: any }) => {
   const [breeds, setBreeds] = useState<DogBreed[]>([]);
   const [clickedBreed, setClickedBreed] = useState<DogBreedImage[]>([]);
   const [isOpened, setIsOpened] = useState(false);
   const [query, setQuery] = useState("");
+  const [randomImage, setRandomImage] = useState<ImageResponse[]>([]);
 
   const toggle = () => {
     setIsOpened((wasOpened) => !wasOpened);
@@ -58,29 +67,46 @@ export const BreedProvider = ({ children }: { children: any }) => {
 
   const fetchBreedsList = async () => {
     // fetch all breeds. Axios requests can be typed for the response
-    const {
-      data: { message: allBreeds },
-    } = await axios.get<ListAllResponse>("https://dog.ceo/api/breeds/list/all");
+    try {
+      const {
+        data: { message: allBreeds },
+      } = await axios.get<ListAllResponse>(
+        "https://dog.ceo/api/breeds/list/all"
+      );
 
-    // extract keys from the ListAllResponse.message
-    const keys = Object.keys(allBreeds);
+      // extract keys from the ListAllResponse.message
+      const keys = Object.keys(allBreeds);
 
-    // resolve images and create DogBreed objects
-    const dogBreeds = await Promise.all(
-      keys.map(async (key) => {
-        const {
-          data: { message: value },
-        } = await axios.get<ImageResponse>(
-          `https://dog.ceo/api/breed/${encodeURIComponent(key)}/images/random`
-        );
-        return { key, value };
-      })
-    );
-    setBreeds(dogBreeds);
+      // resolve images and create DogBreed objects
+      const dogBreeds = await Promise.all(
+        keys.map(async (key) => {
+          const {
+            data: { message: value },
+          } = await axios.get<ImageResponse>(
+            `https://dog.ceo/api/breed/${encodeURIComponent(key)}/images/random`
+          );
+          return { key, value };
+        })
+      );
+      setBreeds(dogBreeds);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const filterList = (e: any) => {
     setQuery(e.target.value);
+  };
+
+  const fetchRandomImages = async () => {
+    try {
+      const res: AxiosResponse = await axios.get<ImageResponse>(
+        "https://dog.ceo/api/breeds/image/random"
+      );
+      setRandomImage(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -91,7 +117,13 @@ export const BreedProvider = ({ children }: { children: any }) => {
             <OpenContext.Provider value={isOpened}>
               <QueryContext.Provider value={query}>
                 <QueryContextUpdate.Provider value={filterList}>
-                  {children}
+                  <RandomImageContext.Provider value={randomImage}>
+                    <RandomImageContextUpdate.Provider
+                      value={fetchRandomImages}
+                    >
+                      {children}
+                    </RandomImageContextUpdate.Provider>
+                  </RandomImageContext.Provider>
                 </QueryContextUpdate.Provider>
               </QueryContext.Provider>
             </OpenContext.Provider>

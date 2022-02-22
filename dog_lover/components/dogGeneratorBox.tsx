@@ -1,36 +1,20 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import axios, { AxiosResponse } from "axios";
 import Button from "@mui/material/Button";
+import {
+  useVariableRandomImageContext,
+  useFunctionRandomImageContext,
+} from "../src/breedContext";
 // import "aos/dist/aos.css";
 
-interface ImageResponse {
-  message: string;
-}
-const localStorageKey = "dogGeneratorBox";
-
 const DogGenerator: FunctionComponent = () => {
-  const [randomImage, setRandomImage] = useState<ImageResponse[]>([]);
+  const randomImage = useVariableRandomImageContext();
+  const fetchRandomImages = useFunctionRandomImageContext();
 
   useEffect(() => {
-    const imageJSON = localStorage.getItem(localStorageKey);
-    if (imageJSON) {
-      setRandomImage(JSON.parse(imageJSON));
-    }
+    fetchRandomImages();
   }, []);
-  useEffect(() => {
-    localStorage.setItem(localStorageKey, JSON.stringify(randomImage));
-  }, []);
-  ///the useEffect() functions work but not in the way I wanted them to work,
-  //they only work when the page refreshes while coding, with "npm run dev" on.
-
-  const fetchRandomImages = async () => {
-    const res: AxiosResponse = await axios.get<ImageResponse>(
-      "https://dog.ceo/api/breeds/image/random"
-    );
-    setRandomImage(res.data);
-  };
 
   return (
     <Box
