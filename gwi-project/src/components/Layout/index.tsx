@@ -25,6 +25,7 @@ const styles = {
     flex: 1;
     flex-direction: column;
     justify-content: flex-end;
+    position: relative;
   `,
   root: css`
     display: flex;

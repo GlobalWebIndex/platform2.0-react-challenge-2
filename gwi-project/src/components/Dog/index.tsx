@@ -1,38 +1,89 @@
-import { useEffect, useState } from "react"
+import { SetStateAction, useEffect, useState } from "react"
 import { DogImage } from "../DogImage"
-import { Link, useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { css } from "@emotion/css"
+import { Pagination } from "../Pagination"
+import { capitalizeFirstLetter } from "../../Utils/stringUtils"
+import { globalBreadcrumbStyles } from "../DogBreeds"
 
 export function Dog() {
+  const [breedImages, setBreedImages] = useState<string[]>([])
   const location = useLocation()
   const breed = location.pathname.split("/")[2]
-  const [breedImages, setBreedImages] = useState<string[]>([])
+  const pageQuery = location.search.split("=")[1]
+  const paginate = (pageNumber: SetStateAction<number>) => setOffset(pageNumber)
+  const page =
+    pageQuery && !isNaN(parseInt(pageQuery)) ? parseInt(pageQuery) : 1
+  const [offset, setOffset] = useState<number>(page)
+  const dogsPerPage = 6
+  const navigate = useNavigate()
   useEffect(() => {
-    fetch(`https://dog.ceo/api/breed/${breed}/images`, {
-      mode: "cors",
-    })
+    navigate(`?currentPage=${offset}`)
+  }, [offset])
+  //I do not like client pagination, but I do not see anywhere in the documentation
+  // mentioning offset and limit...
+  useEffect(() => {
+    fetch(
+      `https://dog.ceo/api/breed/${breed}/images?limit=${dogsPerPage}&offset=${
+        Math.ceil(offset - 1) * dogsPerPage
+      }`,
+      {
+        mode: "cors",
+      }
+    )
       .then((response) => response.json())
       .then((data) => setBreedImages(data.message))
       .catch((error) => console.error(error))
   }, [breed])
-
+  const currentPageDogs = breedImages.slice(
+    (offset - 1) * dogsPerPage,
+    offset * dogsPerPage
+  )
   return (
-    <div className={styles.container}>
-      <div>
-        <h1>{breed}</h1>
-        {breedImages.map((breed) => (
-          <DogImage image={breed} />
+    <div>
+      <span className={globalBreadcrumbStyles.goBackContainer}>
+        <span
+          className={globalBreadcrumbStyles.goBack}
+          onClick={() => {
+            navigate("/")
+          }}
+        >
+          Main Page {">"}
+        </span>
+        <span
+          className={globalBreadcrumbStyles.goBack}
+          onClick={() => {
+            navigate("/breeds")
+          }}
+        >
+          Breed Selection {">"}
+        </span>
+        <span className={globalBreadcrumbStyles.disabled}>{breed}</span>
+      </span>
+      <h1 style={{ marginTop: "40px" }}>{capitalizeFirstLetter(breed)}</h1>
+      <div className={styles.container}>
+        {currentPageDogs.map((breed, idx) => (
+          <DogImage key={idx} image={breed} />
         ))}
       </div>
+      <Pagination
+        onPageChange={(pageNumber: any) => paginate(pageNumber)}
+        totalCount={breedImages.length}
+        siblingCount={1}
+        currentPage={offset}
+        pageSize={dogsPerPage}
+      />
     </div>
   )
 }
 
 const styles = {
   container: css`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    justify-items: center;
+    padding: 30px;
+    grid-template-rows: 1fr;
+    grid-auto-rows: minmax(1, 2);
+    grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
   `,
 }
