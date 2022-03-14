@@ -23,14 +23,9 @@ export function Dog() {
   //I do not like client pagination, but I do not see anywhere in the documentation
   // mentioning offset and limit...
   useEffect(() => {
-    fetch(
-      `https://dog.ceo/api/breed/${breed}/images?limit=${dogsPerPage}&offset=${
-        Math.ceil(offset - 1) * dogsPerPage
-      }`,
-      {
-        mode: "cors",
-      }
-    )
+    fetch(`https://dog.ceo/api/breed/${breed}/images`, {
+      mode: "cors",
+    })
       .then((response) => response.json())
       .then((data) => setBreedImages(data.message))
       .catch((error) => console.error(error))
