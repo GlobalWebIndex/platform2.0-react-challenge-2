@@ -45,15 +45,16 @@ export function Search() {
 
 const styles = {
   search: css`
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: center;
     width: 120px;
-    margin-right: 30px;
+    right: 10%;
     margin-top: 20px;
     height: 40px;
     border-radius: 20px;
-    background-color: #f5f5f5;
+    border: 2px solid var(--gray);
+    background-color: var(--white);
     padding: 0 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -64,7 +65,7 @@ const styles = {
       background-color: transparent;
       font-size: 16px;
       font-weight: 500;
-      color: #000;
+      color: var(--black);
       outline: none;
     }
     button {
@@ -75,7 +76,7 @@ const styles = {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background-color: #f5f5f5;
+      background-color: var(--white);
       border: none;
       outline: none;
       cursor: pointer;
