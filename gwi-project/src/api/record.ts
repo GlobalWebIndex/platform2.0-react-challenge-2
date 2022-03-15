@@ -1,27 +1,33 @@
-import { BreedImage, BreedImages, RandomBreedImage } from "./types"
+import { BreedT, BreedsT, RandomBreedImageT } from "./types"
 
 export const getBreedImages = async (breed: string) => {
-  const api = await fetch(`https://dog.ceo/api/breed/${breed}/images`, {
-    mode: "cors",
-  })
-  return (await api?.json()) as BreedImages
+  const api = await fetch(`https://dog.ceo/api/breed/${breed}/images`)
+  return (await api?.json()) as BreedsT
 }
 
 export const getRandomDogImage = async () => {
   const api = await fetch("https://dog.ceo/api/breeds/image/random")
-  return (await api?.json()) as BreedImage
+  return (await api?.json()) as BreedT
 }
 
 export const getRandomBreedImage = async (breed: string) => {
-  const api = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`, {
-    mode: "cors",
-  })
-  return (await api?.json()) as RandomBreedImage
+  const api = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+  return (await api?.json()) as RandomBreedImageT
 }
 
 export const getAllBreeds = async () => {
-  const api = await fetch("https://dog.ceo/api/breeds/list/all", {
-    mode: "cors",
-  })
-  return (await api?.json()) as BreedImage
+  const api = await fetch("https://dog.ceo/api/breeds/list/all")
+  return (await api?.json()) as BreedT
+}
+
+export const getAllSubBreeds = async (breed: string) => {
+  const api = await fetch(`https://dog.ceo/api/breed/${breed}/list`)
+  return (await api?.json()) as BreedsT
+}
+
+export const getSubBreedImage = async (breed: string, subBreed: string) => {
+  const api = await fetch(
+    `https://dog.ceo/api/breed/${breed}/${subBreed}/images/random`
+  )
+  return (await api?.json()) as BreedT
 }

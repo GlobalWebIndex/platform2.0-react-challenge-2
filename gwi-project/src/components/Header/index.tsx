@@ -11,7 +11,7 @@ const styles = {
     width: 100%;
     display: flex;
     height: 50px;
-    padding: 4px 0;
+    padding: 5px 0;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;

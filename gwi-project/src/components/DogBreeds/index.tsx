@@ -58,12 +58,25 @@ export function DogBreeds() {
         style={{
           textDecoration: "none",
           fontWeight: "bold",
+          marginRight: "24px",
+        }}
+        className={globalButtonStyle.buttonLink}
+        to={`/sub-breeds/${breed}`}
+      >
+        <div className={globalButtonStyle.buttonContainer}>
+          <span> Sub-breeds</span>
+        </div>
+      </Link>
+      <Link
+        style={{
+          textDecoration: "none",
+          fontWeight: "bold",
         }}
         className={globalButtonStyle.buttonLink}
         to={`/breeds/${breed}`}
       >
         <div className={globalButtonStyle.buttonContainer}>
-          <span> More Details</span>
+          <span> More Photos</span>
         </div>
       </Link>
       <div style={{ position: "relative" }}>
