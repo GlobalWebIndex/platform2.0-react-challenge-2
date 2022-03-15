@@ -52,6 +52,7 @@ export function SubBreeds() {
           Main Page {">"}
         </span>
         <span
+          data-testid="breedSelection"
           className={globalBreadcrumbStyles.goBack}
           onClick={() => {
             navigate("/breeds")

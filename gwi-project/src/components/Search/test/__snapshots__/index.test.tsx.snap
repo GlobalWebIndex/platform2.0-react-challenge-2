@@ -3,7 +3,7 @@
 exports[`Search should render 1`] = `
 <DocumentFragment>
   <div
-    class="css-4kutbl"
+    class="css-cvhyyj"
     data-testid="search"
   >
     <input

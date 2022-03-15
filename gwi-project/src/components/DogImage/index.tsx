@@ -5,6 +5,7 @@ export function DogImage(props: { image: string | undefined }) {
     <div className={styles.image}>
       {props.image ? (
         <img
+          data-testid="dogImage"
           style={{ borderRadius: "10px" }}
           src={props.image}
           alt="random dog"
