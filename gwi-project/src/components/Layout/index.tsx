@@ -1,6 +1,7 @@
 import { css } from "@emotion/css"
 import { LayoutProps } from "../../types/types"
 import Header from "../Header"
+import { Search } from "../Search"
 
 function Layout(props: LayoutProps) {
   const { children } = props
@@ -9,6 +10,7 @@ function Layout(props: LayoutProps) {
     <div className={styles.container}>
       <Header>
         <div className={styles.headerText}>DogLover</div>
+        <Search />
       </Header>
       <div className={styles.root}>
         <main className={styles.content}>{children}</main>
