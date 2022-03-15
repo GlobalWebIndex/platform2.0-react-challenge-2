@@ -1,15 +1,24 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { DogImage } from "../DogImage"
-import { css } from "@emotion/css"
+import { css, cx } from "@emotion/css"
 import { Link, useNavigate } from "react-router-dom"
 import { getAllBreeds, getRandomBreedImage } from "../../api/record"
 import { globalButtonStyle } from "../RandomDogImage"
+import { Dropdown } from "../Dropdown"
+import { useOutsideAlerter } from "../Hooks/useOutsideListener"
+import { capitalizeFirstLetter } from "../../Utils/stringUtils"
+import { ReactComponent as Chevron } from "../../assets/icons-chevron-down/icons-chevron-down.svg"
 
 export function DogBreeds() {
   const [breed, setBreed] = useState<string>("affenpinscher")
   const [breedImage, setBreedImage] = useState<string[]>([])
   const [allBreeds, setAllBreeds] = useState<string[]>([])
   const navigate = useNavigate()
+  const {
+    visible: isDropdownVisible,
+    setVisible: setDropdownVisible,
+    ref: dropdownRef,
+  } = useOutsideAlerter(false)
   useEffect(() => {
     getRandomBreedImage(breed)
       .then((data) => setBreedImage(data.message))
@@ -20,6 +29,11 @@ export function DogBreeds() {
       .then((data) => setAllBreeds(Object.keys(data.message)))
       .catch((error) => console.error(error))
   }, [])
+
+  const handleClick = () => {
+    setDropdownVisible(!isDropdownVisible)
+  }
+
   return (
     <div className={styles.container}>
       <div style={{ marginRight: "24px" }}>
@@ -35,13 +49,7 @@ export function DogBreeds() {
           <span className={globalBreadcrumbStyles.disabled}>Dog Breeds</span>
         </span>
         <h1>Dog Breeds</h1>
-        <select onChange={(e) => setBreed(e.target.value)}>
-          {allBreeds.map((breed: string) => (
-            <option key={breed} value={breed}>
-              {breed}
-            </option>
-          ))}
-        </select>
+        <div className={styles.breed}>{capitalizeFirstLetter(breed)}</div>
         <Link to={`/breeds/${breed}`}>
           <DogImage image={breedImage} />
         </Link>
@@ -58,6 +66,30 @@ export function DogBreeds() {
           <span> More Details</span>
         </div>
       </Link>
+      <div style={{ position: "relative" }}>
+        <span
+          onClick={handleClick}
+          className={cx(
+            styles.breedSelection,
+            isDropdownVisible ? "dropdownVisible" : undefined
+          )}
+        >
+          Select Another Breed
+          <span
+            className={cx(
+              styles.chevronContainer,
+              isDropdownVisible ? "dropdownVisible" : undefined
+            )}
+          >
+            <Chevron />
+          </span>
+        </span>
+        {isDropdownVisible ? (
+          <div ref={dropdownRef}>
+            <Dropdown allBreeds={allBreeds} setBreed={setBreed} />
+          </div>
+        ) : null}
+      </div>
     </div>
   )
 }
@@ -75,6 +107,38 @@ const styles = {
     color: var(--matteblack);
     :hover {
       opacity: 0.8;
+    }
+  `,
+  breed: css`
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: 2px solid var(--black);
+    color: var(--matteblack);
+    border-radius: 15px;
+  `,
+  breedSelection: css`
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--matteblack);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 24px;
+    :hover {
+      opacity: 0.7;
+    }
+    &.dropdownVisible {
+      color: var(--lightgray);
+      pointer-events: none;
+    }
+  `,
+  chevronContainer: css`
+    filter: brightness(0) invert(0);
+    margin-top: 6px;
+    &.dropdownVisible {
+      filter: brightness(0) invert(0.5);
     }
   `,
 }
@@ -95,7 +159,7 @@ export const globalBreadcrumbStyles = {
     }
   `,
   disabled: css`
-    color: var(--lightgrey);
+    color: var(--lightgray);
     pointer-events: none;
     cursor: default;
     opacity: 0.5;
