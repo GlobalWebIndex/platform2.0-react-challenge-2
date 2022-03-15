@@ -58,7 +58,7 @@ export function DogBreeds() {
         style={{
           textDecoration: "none",
           fontWeight: "bold",
-          marginRight: "24px",
+          padding: "16px",
         }}
         className={globalButtonStyle.buttonLink}
         to={`/sub-breeds/${breed}`}
@@ -113,6 +113,9 @@ const styles = {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    @media (max-width: 1050px) {
+      flex-direction: column;
+    }
   `,
   moreDetails: css`
     font-size: 1.5rem;

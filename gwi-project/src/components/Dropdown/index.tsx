@@ -29,8 +29,7 @@ const styles = {
     position: absolute;
     right: 0;
     max-height: 100%;
-    transform: translateY(20px);
-    z-index: 10000;
+    transform: translateY(10px);
     cursor: default;
   `,
   container: css`
@@ -51,7 +50,8 @@ const styles = {
     padding: 26px;
     border: 2px solid var(--lightgray);
     border-radius: 5px;
-    font-size: 20px;
+    width: 150px;
+    font-size: 16px;
     cursor: pointer;
 
     :hover {

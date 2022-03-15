@@ -61,7 +61,9 @@ export function Dog() {
         >
           Breed Selection {">"}
         </span>
-        <span className={globalBreadcrumbStyles.disabled}>{breed}</span>
+        <span className={globalBreadcrumbStyles.disabled}>
+          {capitalizeFirstLetter(breed || "")}
+        </span>
       </span>
       <h1 style={{ marginTop: "40px" }}>
         {capitalizeFirstLetter(breed || "")}

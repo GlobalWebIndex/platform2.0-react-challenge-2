@@ -26,7 +26,7 @@ export function RandomDogImage() {
         to="/breeds"
       >
         <div className={globalButtonStyle.buttonContainer}>
-          <span>Browse Dog breeds</span>
+          <span>Browse Dog Breeds</span>
         </div>
       </Link>
     </div>
@@ -41,6 +41,9 @@ const styles = {
     justify-content: space-evenly;
     margin: 0 auto;
     padding: 0;
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
   `,
 }
 
