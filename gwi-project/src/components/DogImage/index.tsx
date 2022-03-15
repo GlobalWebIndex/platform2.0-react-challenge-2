@@ -9,7 +9,7 @@ export function DogImage(props: { image: string | undefined }) {
           style={{ borderRadius: "10px" }}
           src={props.image}
           alt="random dog"
-          width="100%"
+          width={window.innerWidth < 768 ? "100%" : "400px"}
           height="310"
         />
       ) : (

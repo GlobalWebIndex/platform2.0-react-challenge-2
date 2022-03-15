@@ -84,6 +84,9 @@ const styles = {
     justify-content: center;
     align-items: center;
     list-style-type: none;
+    @media (max-width: 515px) {
+      justify-content: flex-start;
+    }
   `,
   paginationItem: css`
     display: flex;
