@@ -42,6 +42,7 @@ const styles = {
     color: var(--white);
     margin-left: 20px;
     font-weight: bold;
+    font-size: 32px;
   `,
 }
 

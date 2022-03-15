@@ -163,7 +163,7 @@ export const globalBreadcrumbStyles = {
   goBackContainer: css`
     position: absolute;
     top: 65px;
-    left: 5%;
+    left: 20px;
   `,
   goBack: css`
     color: var(--black);

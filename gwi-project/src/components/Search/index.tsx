@@ -49,9 +49,9 @@ const styles = {
     display: flex;
     align-items: center;
     width: 120px;
+    height: 35px;
     right: 10%;
     margin-top: 20px;
-    height: 40px;
     border-radius: 20px;
     border: 2px solid var(--gray);
     background-color: var(--white);
