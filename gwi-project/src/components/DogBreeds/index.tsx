@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { DogImage } from "../DogImage"
 import { css } from "@emotion/css"
 import { Link, useNavigate } from "react-router-dom"
-import { getRandomBreedImage } from "../../api/record"
+import { getAllBreeds, getRandomBreedImage } from "../../api/record"
+import { globalButtonStyle } from "../RandomDogImage"
 
 export function DogBreeds() {
   const [breed, setBreed] = useState<string>("affenpinscher")
@@ -15,16 +16,13 @@ export function DogBreeds() {
       .catch((error) => console.error(error))
   }, [breed])
   useEffect(() => {
-    fetch("https://dog.ceo/api/breeds/list/all", {
-      mode: "cors",
-    })
-      .then((response) => response.json())
+    getAllBreeds()
       .then((data) => setAllBreeds(Object.keys(data.message)))
       .catch((error) => console.error(error))
   }, [])
   return (
     <div className={styles.container}>
-      <div>
+      <div style={{ marginRight: "24px" }}>
         <span className={globalBreadcrumbStyles.goBackContainer}>
           <span
             className={globalBreadcrumbStyles.goBack}
@@ -48,18 +46,18 @@ export function DogBreeds() {
           <DogImage image={breedImage} />
         </Link>
       </div>
-      <div>
-        <Link
-          style={{
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-          className={styles.moreDetails}
-          to={`/breeds/${breed}`}
-        >
-          More Details
-        </Link>
-      </div>
+      <Link
+        style={{
+          textDecoration: "none",
+          fontWeight: "bold",
+        }}
+        className={globalButtonStyle.buttonLink}
+        to={`/breeds/${breed}`}
+      >
+        <div className={globalButtonStyle.buttonContainer}>
+          <span> More Details</span>
+        </div>
+      </Link>
     </div>
   )
 }

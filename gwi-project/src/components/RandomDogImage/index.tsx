@@ -17,18 +17,18 @@ export function RandomDogImage() {
         <h2> Random Dog Image </h2>
         <DogImage image={image} />
       </div>
-      <div className={styles.dogBreedsContainer}>
-        <Link
-          style={{
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-          className={styles.dogBreedsText}
-          to="/breeds"
-        >
-          Dog breeds
-        </Link>
-      </div>
+      <Link
+        style={{
+          textDecoration: "none",
+          fontWeight: "bold",
+        }}
+        className={globalButtonStyle.buttonLink}
+        to="/breeds"
+      >
+        <div className={globalButtonStyle.buttonContainer}>
+          <span>Browse Dog breeds</span>
+        </div>
+      </Link>
     </div>
   )
 }
@@ -42,13 +42,26 @@ const styles = {
     margin: 0 auto;
     padding: 0;
   `,
+}
 
-  dogBreedsContainer: css`
+export const globalButtonStyle = {
+  buttonContainer: css`
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid var(--header);
+    background: var(--white);
+    :hover {
+      background: var(--header);
+      span:nth-child(1) {
+        color: var(--white);
+      }
+    }
+    height: 30px;
+    padding: 14px;
+    border-radius: 15px;
   `,
-  dogBreedsText: css`
+  buttonLink: css`
     font-size: 14px;
     font-weight: bold;
     font-stretch: normal;
@@ -59,7 +72,6 @@ const styles = {
 
     :hover {
       cursor: pointer;
-      opacity: 0.7;
     }
   `,
 }

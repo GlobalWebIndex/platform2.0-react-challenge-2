@@ -24,6 +24,7 @@ const styles = {
     align-items: center;
     position: relative;
     padding: 10px;
+    object-fit: contain;
   `,
 
   loaderImage: css`

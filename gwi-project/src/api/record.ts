@@ -16,3 +16,10 @@ export const getRandomBreedImage = async (breed: string) => {
   })
   return api?.json()
 }
+
+export const getAllBreeds = async () => {
+  const api = await fetch("https://dog.ceo/api/breeds/list/all", {
+    mode: "cors",
+  })
+  return api?.json()
+}
