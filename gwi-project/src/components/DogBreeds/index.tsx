@@ -36,7 +36,7 @@ export function DogBreeds() {
 
   return (
     <div className={styles.container}>
-      <div style={{ marginRight: "24px" }}>
+      <div style={{ marginTop: "24px" }}>
         <span className={globalBreadcrumbStyles.goBackContainer}>
           <span
             className={globalBreadcrumbStyles.goBack}

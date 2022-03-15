@@ -9,7 +9,7 @@ export function DogImage(props: { image: string | undefined }) {
           style={{ borderRadius: "10px" }}
           src={props.image}
           alt="random dog"
-          width="400"
+          width="100%"
           height="310"
         />
       ) : (
@@ -25,7 +25,6 @@ const styles = {
     align-items: center;
     position: relative;
     padding: 10px;
-    object-fit: contain;
   `,
 
   loaderImage: css`

@@ -24,7 +24,7 @@ export function Search() {
     if (key !== "Enter") return
     if (searchTerm.length === 0 || searchTerm.trim() === "") return
     if (allBreeds.includes(searchTerm.toLowerCase())) {
-      navigate(`/breeds/${searchTerm.toLowerCase()}`)
+      navigate(`/breeds/${searchTerm.toLowerCase()}?currentPage=1`)
       setSearchTerm("")
     }
   }

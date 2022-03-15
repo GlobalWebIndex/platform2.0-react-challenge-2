@@ -77,7 +77,7 @@ export function Dog() {
         onPageChange={(pageNumber: any) => paginate(pageNumber)}
         totalCount={breedImages.length}
         siblingCount={1}
-        currentPage={offset}
+        currentPage={page}
         pageSize={dogsPerPage}
       />
     </div>
@@ -88,9 +88,12 @@ export const container = {
   container: css`
     display: grid;
     justify-items: center;
-    padding: 30px;
+    padding: 10px;
     grid-template-rows: 1fr;
     grid-auto-rows: minmax(1, 2);
     grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+    @media (max-width: 950px) {
+      grid-template-columns: 1fr;
+    }
   `,
 }

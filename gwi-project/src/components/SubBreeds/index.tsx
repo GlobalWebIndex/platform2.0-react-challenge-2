@@ -69,7 +69,7 @@ export function SubBreeds() {
       </h1>
       <div className={container.container}>
         {allSubBreeds.length === 0 ? (
-          <h2> No Breeds Found</h2>
+          <h2> No Sub-Breeds Found</h2>
         ) : (
           currentPageDogs.map((subBreed: any, idx: any) => (
             <SubBreed key={idx} breed={breed} subBreed={subBreed} />
@@ -80,7 +80,7 @@ export function SubBreeds() {
         onPageChange={(pageNumber: any) => paginate(pageNumber)}
         totalCount={allSubBreeds.length}
         siblingCount={1}
-        currentPage={offset}
+        currentPage={page}
         pageSize={dogsPerPage}
       />
     </div>
