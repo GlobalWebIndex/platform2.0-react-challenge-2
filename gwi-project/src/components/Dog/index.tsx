@@ -90,6 +90,7 @@ export const container = {
     justify-items: center;
     padding: 10px;
     grid-template-rows: 1fr;
+    row-gap: 10px;
     grid-auto-rows: minmax(1, 2);
     grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
     @media (max-width: 950px) {

@@ -5,9 +5,9 @@ export const getBreedImages = async (breed: string) => {
   return (await api?.json()) as BreedsT
 }
 
-export const getRandomDogImage = async () => {
-  const api = await fetch("https://dog.ceo/api/breeds/image/random")
-  return (await api?.json()) as BreedT
+export const getRandomDogImages = async () => {
+  const api = await fetch("https://dog.ceo/api/breeds/image/random/50")
+  return (await api?.json()) as BreedsT
 }
 
 export const getRandomBreedImage = async (breed: string) => {

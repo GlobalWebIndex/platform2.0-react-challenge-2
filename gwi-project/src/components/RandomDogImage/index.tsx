@@ -2,48 +2,54 @@ import { css } from "@emotion/css"
 import { Link } from "react-router-dom"
 import { DogImage } from "../DogImage"
 import { useEffect, useState } from "react"
-import { getRandomDogImage } from "../../api/record"
+import { getRandomDogImages } from "../../api/record"
+import { container } from "../Dog"
 
-export function RandomDogImage() {
-  const [image, setImage] = useState<string>("")
+export function RandomDogImages() {
+  const [images, setImages] = useState<string[]>([])
   useEffect(() => {
-    getRandomDogImage()
-      .then((data) => setImage(data.message))
+    getRandomDogImages()
+      .then((data) => setImages(data.message))
       .catch((error) => console.error(error))
   }, [])
+
   return (
-    <div className={styles.container}>
-      <div>
-        <h2> Random Dog Image </h2>
-        <DogImage image={image} />
+    <>
+      <div className={styles.container}>
+        <Link
+          style={{
+            textDecoration: "none",
+            fontWeight: "bold",
+            marginTop: "16px",
+          }}
+          className={globalButtonStyle.buttonLink}
+          to="/breeds"
+        >
+          <div className={globalButtonStyle.buttonContainer}>
+            <span>Browse Dog Breeds</span>
+          </div>
+        </Link>
       </div>
-      <Link
-        style={{
-          textDecoration: "none",
-          fontWeight: "bold",
-        }}
-        className={globalButtonStyle.buttonLink}
-        to="/breeds"
-      >
-        <div className={globalButtonStyle.buttonContainer}>
-          <span>Browse Dog Breeds</span>
+      <div>
+        <h2> Random Dog Images </h2>
+        <div className={container.container}>
+          {images.map((image) => (
+            <DogImage key={image} image={image} />
+          ))}
         </div>
-      </Link>
-    </div>
+      </div>
+    </>
   )
 }
 
 const styles = {
   container: css`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     margin: 0 auto;
     padding: 0;
-    @media (max-width: 700px) {
-      flex-direction: column;
-    }
   `,
 }
 
