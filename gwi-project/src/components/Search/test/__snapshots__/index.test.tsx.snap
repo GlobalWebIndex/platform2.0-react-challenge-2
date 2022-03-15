@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search should render 1`] = `
+<DocumentFragment>
+  <div
+    class="css-4kutbl"
+    data-testid="search"
+  >
+    <input
+      data-testid="search-input"
+      placeholder="Search"
+      type="text"
+      value=""
+    />
+  </div>
+</DocumentFragment>
+`;

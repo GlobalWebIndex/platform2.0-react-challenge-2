@@ -30,8 +30,9 @@ export function Search() {
   }
 
   return (
-    <div className={styles.search}>
+    <div data-testid="search" className={styles.search}>
       <input
+        data-testid="search-input"
         value={searchTerm}
         onChange={debouncedChangeHandler}
         onKeyPress={handleSubmit}

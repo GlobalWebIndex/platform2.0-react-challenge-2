@@ -19,8 +19,4 @@ F
 A
 src/setupTests.ts,3/9/39129446b425a1d640160c068e4194e96639eedf
 =
-tsconfig.json,6/1/61ebb9fd6e8cf9082658121d5d81e297791dacd0
-A
-package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
-=
 src/index.tsx,5/a/5ab44fe33ca96299f51ad4778a73e425b92bf439

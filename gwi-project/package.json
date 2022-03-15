@@ -43,6 +43,8 @@
     ]
   },
   "devDependencies": {
-    "prettier": "2.5.1"
+    "jest-watch-typeahead": "^0.6.5",
+    "prettier": "2.5.1",
+    "ts-node-dev": "^1.1.8"
   }
 }

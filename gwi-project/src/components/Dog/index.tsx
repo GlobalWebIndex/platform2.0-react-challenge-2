@@ -40,8 +40,12 @@ export function Dog() {
   )
   return (
     <div>
-      <span className={globalBreadcrumbStyles.goBackContainer}>
+      <span
+        data-testid="goBackContainer"
+        className={globalBreadcrumbStyles.goBackContainer}
+      >
         <span
+          data-testid="mainPage"
           className={globalBreadcrumbStyles.goBack}
           onClick={() => {
             navigate("/")
@@ -59,7 +63,9 @@ export function Dog() {
         </span>
         <span className={globalBreadcrumbStyles.disabled}>{breed}</span>
       </span>
-      <h1 style={{ marginTop: "40px" }}>{capitalizeFirstLetter(breed)}</h1>
+      <h1 style={{ marginTop: "40px" }}>
+        {capitalizeFirstLetter(breed || "")}
+      </h1>
       <div className={styles.container}>
         {currentPageDogs.map((image, idx) => (
           <DogImage key={idx} image={image} />
