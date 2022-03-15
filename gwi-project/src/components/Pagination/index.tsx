@@ -84,15 +84,12 @@ const styles = {
     justify-content: center;
     align-items: center;
     list-style-type: none;
-    @media (max-width: 515px) {
-      justify-content: flex-start;
-    }
   `,
   paginationItem: css`
     display: flex;
     align-items: center;
     padding: 0 12px;
-    margin: auto 4px;
+    margin: auto 0;
     height: 32px;
     min-width: 32px;
     color: var(--matteblack);
@@ -101,7 +98,7 @@ const styles = {
     letter-spacing: 0.1em;
     border-radius: 16px;
     line-height: 1.8;
-    font-size: 16px;
+    font-size: 18px;
     :hover {
       background-color: rgba(0, 0, 0, 0.2);
       cursor: pointer;
