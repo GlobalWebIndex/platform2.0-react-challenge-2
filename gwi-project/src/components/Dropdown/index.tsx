@@ -1,7 +1,10 @@
 import { css } from "@emotion/css"
 import { capitalizeFirstLetter } from "../../Utils/stringUtils"
 
-export function Dropdown(props: any) {
+export function Dropdown(props: {
+  allBreeds: string[]
+  setBreed: (arg0: string) => void
+}) {
   return (
     <div className={styles.overview}>
       <div className={styles.container}>

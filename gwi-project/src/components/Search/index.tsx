@@ -18,7 +18,8 @@ export function Search() {
       .then((data) => setAllBreeds(Object.keys(data.message)))
       .catch((error) => console.error(error))
   }, [])
-  function handleKeyPress(event: any) {
+
+  function handleKeyPress(event: { key: string }) {
     const key = event.key
     if (key !== "Enter") return
     if (searchTerm.length === 0 || searchTerm.trim() === "") return

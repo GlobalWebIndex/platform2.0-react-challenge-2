@@ -33,6 +33,7 @@ export function Dog() {
         console.error(error)
       })
   }, [breed])
+
   const currentPageDogs = breedImages?.slice(
     (offset - 1) * dogsPerPage,
     offset * dogsPerPage

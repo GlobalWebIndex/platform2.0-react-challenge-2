@@ -1,6 +1,6 @@
 import { css, cx } from "@emotion/css"
 
-export function DogImage(props: any) {
+export function DogImage(props: { image: string | undefined }) {
   return (
     <div className={styles.image}>
       {props.image ? (

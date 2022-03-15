@@ -11,7 +11,7 @@ import { ReactComponent as Chevron } from "../../assets/icons-chevron-down/icons
 
 export function DogBreeds() {
   const [breed, setBreed] = useState<string>("affenpinscher")
-  const [breedImage, setBreedImage] = useState<string[]>([])
+  const [breedImage, setBreedImage] = useState<string>("")
   const [allBreeds, setAllBreeds] = useState<string[]>([])
   const navigate = useNavigate()
   const {
