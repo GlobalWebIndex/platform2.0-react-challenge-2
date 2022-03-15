@@ -2,12 +2,12 @@ import { css } from "@emotion/css"
 import { Link } from "react-router-dom"
 import { DogImage } from "../DogImage"
 import { useEffect, useState } from "react"
+import { getRandomDogImage } from "../../api/record"
 
 export function RandomDogImage() {
   const [image, setImage] = useState<string>("")
   useEffect(() => {
-    fetch("https://dog.ceo/api/breeds/image/random")
-      .then((response) => response.json())
+    getRandomDogImage()
       .then((data) => setImage(data.message))
       .catch((error) => console.error(error))
   }, [])

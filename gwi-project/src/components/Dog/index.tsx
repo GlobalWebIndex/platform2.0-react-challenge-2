@@ -5,6 +5,7 @@ import { css } from "@emotion/css"
 import { Pagination } from "../Pagination"
 import { capitalizeFirstLetter } from "../../Utils/stringUtils"
 import { globalBreadcrumbStyles } from "../DogBreeds"
+import { getBreedImages } from "../../api/record"
 
 export function Dog() {
   const [breedImages, setBreedImages] = useState<string[]>([])
@@ -20,17 +21,19 @@ export function Dog() {
   useEffect(() => {
     navigate(`?currentPage=${offset}`)
   }, [offset])
+
   //I do not like client pagination, but I do not see anywhere in the documentation
   // mentioning offset and limit...
   useEffect(() => {
-    fetch(`https://dog.ceo/api/breed/${breed}/images`, {
-      mode: "cors",
-    })
-      .then((response) => response.json())
-      .then((data) => setBreedImages(data.message))
-      .catch((error) => console.error(error))
+    getBreedImages(breed)
+      .then((response) => {
+        setBreedImages(response.message)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   }, [breed])
-  const currentPageDogs = breedImages.slice(
+  const currentPageDogs = breedImages?.slice(
     (offset - 1) * dogsPerPage,
     offset * dogsPerPage
   )

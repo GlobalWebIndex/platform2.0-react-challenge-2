@@ -2,18 +2,16 @@ import { useEffect, useState } from "react"
 import { DogImage } from "../DogImage"
 import { css } from "@emotion/css"
 import { Link, useNavigate } from "react-router-dom"
+import { getRandomBreedImage } from "../../api/record"
 
 export function DogBreeds() {
   const [breed, setBreed] = useState<string>("affenpinscher")
-  const [breedImages, setBreedImages] = useState<string[]>([])
+  const [breedImage, setBreedImage] = useState<string[]>([])
   const [allBreeds, setAllBreeds] = useState<string[]>([])
   const navigate = useNavigate()
   useEffect(() => {
-    fetch(`https://dog.ceo/api/breed/${breed}/images`, {
-      mode: "cors",
-    })
-      .then((response) => response.json())
-      .then((data) => setBreedImages(data.message))
+    getRandomBreedImage(breed)
+      .then((data) => setBreedImage(data.message))
       .catch((error) => console.error(error))
   }, [breed])
   useEffect(() => {
@@ -24,7 +22,6 @@ export function DogBreeds() {
       .then((data) => setAllBreeds(Object.keys(data.message)))
       .catch((error) => console.error(error))
   }, [])
-
   return (
     <div className={styles.container}>
       <div>
@@ -48,7 +45,7 @@ export function DogBreeds() {
           ))}
         </select>
         <Link to={`/breeds/${breed}`}>
-          <DogImage image={breedImages[0]} />
+          <DogImage image={breedImage} />
         </Link>
       </div>
       <div>
