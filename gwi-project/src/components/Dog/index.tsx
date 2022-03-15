@@ -61,8 +61,8 @@ export function Dog() {
       </span>
       <h1 style={{ marginTop: "40px" }}>{capitalizeFirstLetter(breed)}</h1>
       <div className={styles.container}>
-        {currentPageDogs.map((breed, idx) => (
-          <DogImage key={idx} image={breed} />
+        {currentPageDogs.map((image, idx) => (
+          <DogImage key={idx} image={image} />
         ))}
       </div>
       <Pagination
