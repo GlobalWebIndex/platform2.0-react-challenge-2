@@ -1,32 +1,24 @@
-# GlobalWebIndex Engineering Challenge
+# Getting Started with Create React App
 
-## Exercise: DogLover
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Available Scripts
 
-Create an React application for dog lovers which is going to build upon https://dog.ceo/dog-api/ and will have 3 views. 
+In the project directory, you can run:
 
+### `npm start or yarn start `
 
-The application will include a header with 3 links, each link will point to the following 3 views: 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-- The first view will display random dog images with the refered dog api
+#### Extra libraries
 
-- The second view will display a list of dog breeds accompanied with a breed image.  This list will apply links to the third view. 
+Animations were made with Motion Framer (HomePage, Breeds Page)
+Given the amount of the results, pagination was used to separate results that were extracted from API in each page. 
 
-- The third view will display a list of images for a specific dog breed, including a header with the selected breed. 
-
-
-Nice to have: Filtering dog breeds based on search input field. 
-
-
-
-You can find the API documentation here: https://dog.ceo/dog-api/documentation 
-
-We give you a lot of freedom in technologies and ways of doing things. We only insist on you using React.js with Typescript. 
-Note that we have omitted a lot of details in this description which we hope you will fill in and thus prove to us that you are aware of industry best practices and that you also follow them. Get creative as much as you want, we WILL appreciate it. You will not be evaluated based on how well you follow these instructions, but based on how sensible your solution will be. In case you are not able to implement something you would normally implement for time reasons, make it clear with a comment.
-
-
-
-## Submission
-
-Just fork and make a PR to the current repo! Good luck, potential colleague!
+##### CSS and SCSS 
+SCSS was used and ClassNames were given with BEM (Block Element Modifier) method.
+Layout is consistent through the pages, but different classes were given to each page in order to create different hover effects for each card. 

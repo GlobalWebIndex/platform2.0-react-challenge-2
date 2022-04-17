@@ -1,0 +1,34 @@
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 15px 8px 15px;
+    background-color: #000;
+
+
+    &--logo{
+        width: 80px;  
+    }
+
+    &__links-container{
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      
+        &--link{
+            font-size: 18px;
+            font-family: 'Finger Paint', cursive;
+            color: white;
+            font-weight: 700;
+            background:linear-gradient(90deg, rgba(20,166,152,1) 0%, rgba(255,152,8,1) 22%, rgba(159,118,101,1) 30%, rgba(0,212,255,1) 41%,
+            rgba(226,0,255,1) 54%, rgba(0,181,255,1) 61%, rgba(0,48,255,1) 71%, rgba(179,0,255,1) 84%, rgba(255,0,250,1) 100%);
+            background-size: 0% 4px;
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            transition: background-size 300ms ease-in-out ;
+
+            &:hover{
+                background-size:100% 4px;
+            }
+        }
+    }
+}
