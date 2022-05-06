@@ -3,13 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Random from './routes/Random';
+import Breeds from './routes/Breeds';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="random" element={<Random />} />
+        <Route path="breeds" element={<Breeds />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
