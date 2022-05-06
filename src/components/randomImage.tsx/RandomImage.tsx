@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { StyledMain, PageTitle, StyledImage } from "./styles";
+import formatBreedName from "../../helpers/formatName";
 
 export default function RandomImage() {
     const [data, setData] = useState<string>('');
@@ -11,7 +12,7 @@ export default function RandomImage() {
         .then((response) => response.json())
         .then((jsondata) => {
             setData(jsondata.message);
-            setBreed(jsondata.message.split('/')[4]);
+            setBreed(formatBreedName(jsondata.message.split('/')[4]));
         });
 
         

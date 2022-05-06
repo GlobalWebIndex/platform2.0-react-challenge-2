@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Breed from '../breed/Breed';
-import { StyledMain } from './styles';
+import { StyledMain, BreedListContainer } from './styles';
 
 export default function BreedList() {
     const [breeds, setBreeds] = useState<string[]>([]);
@@ -45,7 +45,9 @@ export default function BreedList() {
 
     return(
         <StyledMain>
-            {breeds.map(breed => <Breed key={breed} breedName={breed} />)}
+            <BreedListContainer>
+                {breeds.map(breed => <Breed key={breed} breedName={breed} />)}
+            </BreedListContainer>
         </StyledMain>
     )
 }

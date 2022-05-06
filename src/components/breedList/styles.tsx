@@ -9,3 +9,8 @@ export const StyledMain = styled.main`
     flex-direction: column;
     margin-top: 6em;
 `;
+
+export const BreedListContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+`;

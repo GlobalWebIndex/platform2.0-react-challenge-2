@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BreedContainer } from './styles';
 
 type Props = {
     breedName: string;
@@ -22,9 +23,9 @@ export default function Breed( {breedName}: Props ) {
     }, [])
 
     return(
-        <div>
+        <BreedContainer>
             <img src={breedImage} />
             <p>{breedName}</p>
-        </div>
+        </BreedContainer>
     )
 }
