@@ -12,15 +12,27 @@ export const NavBar = styled.div`
     align-items: center;
 `;
 
-export const NavMenu = styled.nav`
-    width: 80%;
-    margin: auto;
-    color: black;
+export const Wrapper = styled.div`
     display: flex;
     align-items: center;
+    width: 60%;
+    margin: auto;
     justify-content: space-around;
+`;
+
+export const BrandContainer = styled.div`
+    display: flex;
+    width: 50%;
+`;
+
+export const NavMenu = styled.nav`
+    color: black;
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
 `;
 
 export const StyledLink = styled(Link)`
     text-decoration: none;
+    color: black;
 `;

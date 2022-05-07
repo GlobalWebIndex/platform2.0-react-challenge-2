@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { BreedContainer } from './styles';
+import { BreedContainer, StyledBreedImage, StyledBreedName } from './styles';
+import formatBreedName from "../../helpers/formatName";
+import { Link } from "react-router-dom";
 
 type Props = {
     breedName: string;
-  };
+};
 
 export default function Breed( {breedName}: Props ) {
 
@@ -23,9 +25,11 @@ export default function Breed( {breedName}: Props ) {
     }, [])
 
     return(
-        <BreedContainer>
-            <img src={breedImage} />
-            <p>{breedName}</p>
-        </BreedContainer>
+        <Link to={breedName}>
+            <BreedContainer>
+                <StyledBreedImage src={breedImage} />
+                <StyledBreedName>{formatBreedName(breedName)}</StyledBreedName>
+            </BreedContainer>
+        </Link>
     )
 }

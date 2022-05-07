@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Random from './routes/Random';
 import Breeds from './routes/Breeds';
+import BreedGallery from './routes/BreedGallery';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,6 +18,7 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="random" element={<Random />} />
         <Route path="breeds" element={<Breeds />} />
+        <Route path="breeds/:breed" element={<BreedGallery />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

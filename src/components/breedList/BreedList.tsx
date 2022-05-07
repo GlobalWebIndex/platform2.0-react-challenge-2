@@ -27,21 +27,7 @@ export default function BreedList() {
         }
 
         fetchBreeds();
-
     }, []);
-
-
-    /*
-    const allBreeds = breeds.message.map(breed => {
-        if (breed.length > 0) {
-            for (let i = 0; i < breed.length; i++) {
-
-            }
-        }
-    });
-    */
-
-
 
     return(
         <StyledMain>
@@ -51,19 +37,3 @@ export default function BreedList() {
         </StyledMain>
     )
 }
-
-
-/*
-
-
-export default function Breeds() {
-
-    
-
-    return(
-        <div>
-            {breeds.map(breed => <Breed key={breed} breedName={breed} />)}
-        </div>
-    );
-}
-*/
