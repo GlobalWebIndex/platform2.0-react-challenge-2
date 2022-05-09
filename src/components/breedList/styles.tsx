@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { dogloverTheme } from '../../dogloverTheme';
 
 export const StyledMain = styled.main`
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap');
     width: 100%;
     margin: auto;
     display: flex;
@@ -10,7 +9,7 @@ export const StyledMain = styled.main`
     justify-content: center;
     flex-direction: column;
     & h1 {
-        font-family: Montserrat;
+        font-family: ${dogloverTheme.font};
         font-weight: extra-bold;
         text-transform: uppercase;
     }
