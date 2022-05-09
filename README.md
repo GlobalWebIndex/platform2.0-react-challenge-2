@@ -4,7 +4,9 @@
 
 # How to run
 npm install  
+
 npm start  
+
 **Note: If you run the project locally, useEffects are called twice. I made some research and it seems this is due to <React.StrictMode>. It does not happen on production.**
 
 # Tech Stack
@@ -41,7 +43,7 @@ npm start
 - **Link to Wikpedia breed page at the very bottom. (Again, results may vary depending on visitor's country.**  
 
 # Styling
-All the styling was done using Styled Components. The color palette I picked is #de1b76 (GWI's Magenta) and #fdecda, combined with black and white.  
+All the styling was done using Styled Components. The color palette I picked is **#de1b76 (GWI's Magenta)** and **#fdecda**, combined with black and white.  
 
 # Final Thoughts
 I had a lot of fun with this challenge and learned new things, as I had, for example, never used Styled Components or React Paginate.  
