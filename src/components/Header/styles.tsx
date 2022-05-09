@@ -39,6 +39,7 @@ export const BrandContainer = styled.div`
 
 export const HomeLink = styled(Link)`
     color: black;
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.5em;
