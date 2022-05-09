@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-amber-50 selection:bg-amber-700 selection:text-amber-50 overflow-y-scroll;
+}
