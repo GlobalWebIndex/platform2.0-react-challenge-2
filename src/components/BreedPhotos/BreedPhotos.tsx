@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import ImageCard from '../ImageCard/ImageCard';
 import formatBreedName from '../../helpers/formatName';
-import { BreedPhotosGrid, StyledMain, StyledPaginateContainer } from "./styles";
+import { BreedPhotosGrid, StyledMain, StyledPaginateContainer } from './styles';
 
 type BreedPhotosProps = {
     breedName: string;
@@ -18,7 +18,7 @@ function Items({ currentItems }: ItemProps) {
       <>
         {currentItems &&
           currentItems.map((item) => (
-            <ImageCard imageUrl={item} />
+            <ImageCard key={item} imageUrl={item} />
           ))}
       </>
     );
@@ -28,55 +28,66 @@ export default function BreedPhotos({ breedName, itemsPerPage }: BreedPhotosProp
     // Set empty list of items.
     const [items, setItems] = useState<string[]>([]);
     const [currentItems, setCurrentItems] = useState<string[]>([]);
-    const [pageCount, setPageCount] = useState(0);
+    const [pageCount, setPageCount] = useState<number>(0);
     // Set page offsets.
-    const [itemOffset, setItemOffset] = useState(0);
+    const [itemOffset, setItemOffset] = useState<number>(0);
+
+    const getBreedPhotos = useCallback(() => {
+        if(breedName.includes('-')) {
+            breedName = breedName.replace('-', '/');
+        }
+
+        fetch(`https://dog.ceo/api/breed/${breedName}/images`)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+        .then(data => setItems(data.message))
+        .catch((error) => {
+            console.log(error)
+        });
+    }, [breedName])
 
     // Fetch breed images
         useEffect(() => {
-            const breedImages = () => {
-                fetch(`https://dog.ceo/api/breed/${breedName}/images`)
-                .then(data => data.json())
-                .then(jsonData => setItems(jsonData.message));
-            }
-            breedImages();
+            getBreedPhotos();
 
             const endOffset = itemOffset + itemsPerPage;
-            console.log(`Loading items from ${itemOffset} to ${endOffset}`);
             setCurrentItems(items.slice(itemOffset, endOffset));
             setPageCount(Math.ceil(items.length / itemsPerPage));
-        }, [items, itemOffset, itemsPerPage]);
+        }, [items, itemOffset, itemsPerPage, getBreedPhotos]);
 
     // Call when user click to request another page.
     const handlePageClick = (event: any) => {
         const newOffset = (event.selected * itemsPerPage) % items.length;
-        console.log(
-        `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
         setItemOffset(newOffset);
     };
 
     return(
         <>
             <StyledMain>
-                <h2>{formatBreedName(breedName)}</h2>
+                <h1>{formatBreedName(breedName)}</h1>
                 <BreedPhotosGrid>
                     <Items currentItems={currentItems} />
                 </BreedPhotosGrid>
                 <StyledPaginateContainer>
                     <ReactPaginate
-                        breakLabel="..."
-                        breakClassName="break-me"
-                        nextLabel="Next >"
+                        breakLabel='...'
+                        breakClassName='break-me'
+                        nextLabel='Next >'
                         onPageChange={handlePageClick}
                         pageRangeDisplayed={5}
                         pageCount={pageCount}
-                        previousLabel="< Previous"
+                        previousLabel='< Previous'
                         renderOnZeroPageCount={undefined}
-                        containerClassName="pagination"
-                        activeClassName="active"
+                        containerClassName='pagination'
+                        activeClassName='active'
                     />
                 </StyledPaginateContainer>
+                <a href={`http://www.google.com/search?q=${breedName} wikipedia&btnI`} target='_blank' rel='noreferrer'>
+                    See more information about {formatBreedName(breedName)} on Wikipedia
+                </a>
             </StyledMain>
         </>
     )

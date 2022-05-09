@@ -1,21 +1,42 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { dogloverTheme } from '../../dogloverTheme';
 
 export const BreedContainer = styled.div`
-    padding: 1em 2em;
-    margin: 1em 2em;
-    border: 1px solid #de1b76;
-    border-radius: 10px;
-    max-width: 20em;
+    border: 1px solid ${dogloverTheme.colors.main};
+    border-radius: 20px;
+    max-width: 100%;
+    height: 30em;
     display: flex;
     flex-direction: column;
-    background-color: #fdecda;
+    justify-content: space-between;
+    background-color: ${dogloverTheme.colors.secondary};
+    &:hover {
+        outline: 3px solid ${dogloverTheme.colors.main};
+    }
 `;
 
 export const StyledBreedImage = styled.img`
     max-width: 100%;
-    border-radius: 50%;
+    max-height: 25em;
+    border-radius: 20px 20px 0px 0px;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
 `;
 
 export const StyledBreedName = styled.p`
     text-align: center;
+    color: black;
+    font-family: ${dogloverTheme.font};
+    font-weight: bold;
+    margin-bottom: 2em;
+`;
+
+export const StyledLink = styled(Link)`
+    margin: 1em 2em;
+    text-decoration-color: ${dogloverTheme.colors.main};
+    &:hover {
+        text-decoration-color: black;
+    }
 `;

@@ -1,9 +1,21 @@
 export default function formatBreedName(rawBreedName: string) {
     rawBreedName = rawBreedName.replace('-', ' ');
 
-    // Deal with corner case of breed German Shepherd, which comes from Dog API as "germanshepherd".
+    // Deal with corner cases that come poorly formatted from the API.
     if (rawBreedName === "germanshepherd") {
         return "German Shepherd";
+    }
+    if (rawBreedName === "mexicanhairless") {
+        return "Mexican Hairless";
+    }
+    if (rawBreedName === "shihtzu") {
+        return "Shih Tzu";
+    }
+    if (rawBreedName === "stbernard") {
+        return "St. Bernard";
+    }
+    if (rawBreedName === "australian shepherd" || rawBreedName === "finnish lapphund") {
+        rawBreedName = rawBreedName.split(" ").reverse().join(" ");
     }
 
     // Capitalize first letter of each word.
@@ -18,7 +30,4 @@ export default function formatBreedName(rawBreedName: string) {
     }
 
     return words.join(" ");
-
-
-    // TO DO: Deal with rest of corner cases: australian shepherd, norwegian buhund...
 }

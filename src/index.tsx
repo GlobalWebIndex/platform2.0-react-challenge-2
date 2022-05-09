@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Random from './routes/Random';
 import Breeds from './routes/Breeds';
 import BreedGallery from './routes/BreedGallery';
+import NoMatch from './routes/NoMatch';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,10 +15,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Random />} />
         <Route path="random" element={<Random />} />
         <Route path="breeds" element={<Breeds />} />
         <Route path="breeds/:breed" element={<BreedGallery />} />
+        <Route path="*" element={<NoMatch />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

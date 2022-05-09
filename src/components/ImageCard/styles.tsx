@@ -1,10 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
-    max-width: 25%;
+    margin-right: 1em;
 `;
 
 export const StyledImage = styled.img`
-    height: 400px;
     width: 400px;
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
 `;
