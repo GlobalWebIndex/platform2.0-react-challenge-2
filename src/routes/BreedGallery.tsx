@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import Header from '../components/header/Header';
+import Header from '../components/Header/Header';
 import BreedPhotos from '../components/BreedPhotos/BreedPhotos';
 
 interface Params {

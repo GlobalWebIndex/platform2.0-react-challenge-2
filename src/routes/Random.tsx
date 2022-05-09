@@ -1,5 +1,5 @@
-import Header from '../components/header/Header';
-import RandomImage from '../components/randomImage.tsx/RandomImage';
+import Header from '../components/Header/Header';
+import RandomImage from '../components/RandomImage/RandomImage';
 
 export default function Random() {
     return(
