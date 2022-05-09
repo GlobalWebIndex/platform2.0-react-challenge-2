@@ -46,7 +46,7 @@ npm start
 All the styling was done using Styled Components. The color palette I picked is **#de1b76 (GWI's Magenta)** and **#fdecda**, combined with black and white.  
 
 # Demo
-[Vercel deployment] (https://doglover.vercel.app/)
+[Vercel deployment](https://doglover.vercel.app/)
 
 # Final Thoughts
 I had a lot of fun with this challenge and learned new things, as I had, for example, never used Styled Components or React Paginate.  
