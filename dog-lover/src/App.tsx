@@ -4,6 +4,7 @@ import { DogBreedImages } from './components/DogBreedImages';
 import { DogBreeds } from './components/DogBreeds';
 import { DogSubBreedImages } from './components/DogSubBreedImages';
 import { Layout } from './components/Layout';
+import { NotFound } from './components/NotFound';
 import { RandomDogs } from './components/RandomDogs';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     >
       <Layout>
         <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route path="/" element={<RandomDogs />} />
           <Route path="/breeds" element={<DogBreeds />} />
           <Route path="/breeds/:breed" element={<DogBreedImages />} />
