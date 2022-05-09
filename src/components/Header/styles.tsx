@@ -67,8 +67,6 @@ export const NavMenu = styled.nav`
 export const StyledLink = styled(Link)`
     text-decoration: none;
     color: black;
-    font-family: ${dogloverTheme.font};
-    font-weight: bold;
     &:hover {
         text-decoration: underline;
         text-decoration-color: ${dogloverTheme.colors.main};

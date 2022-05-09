@@ -17,7 +17,6 @@ export const StyledMain = styled.main`
 `;
 
 export const PageTitle = styled.h1`
-    font-family: ${dogloverTheme.font};
     text-transform: uppercase;
     font-weight: bold;
 `;
@@ -28,7 +27,6 @@ export const StyledImage = styled.img`
 `;
 
 export const StyledBreedName = styled.p`
-    font-family: ${dogloverTheme.font};
     font-weight: bold;
     font-size: 1.5em;
 `;

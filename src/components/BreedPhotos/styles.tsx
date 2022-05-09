@@ -15,7 +15,6 @@ export const StyledMain = styled.main`
     }
 
     & h1 {
-        font-family: ${dogloverTheme.font};
         font-weight: bold;
         text-transform: uppercase;
     }

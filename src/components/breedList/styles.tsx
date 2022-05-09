@@ -9,7 +9,6 @@ export const StyledMain = styled.main`
     justify-content: center;
     flex-direction: column;
     & h1 {
-        font-family: ${dogloverTheme.font};
         font-weight: extra-bold;
         text-transform: uppercase;
     }

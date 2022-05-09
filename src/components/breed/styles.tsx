@@ -28,7 +28,6 @@ export const StyledBreedImage = styled.img`
 export const StyledBreedName = styled.p`
     text-align: center;
     color: black;
-    font-family: ${dogloverTheme.font};
     font-weight: bold;
     margin-bottom: 2em;
 `;
