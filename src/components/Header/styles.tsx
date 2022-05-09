@@ -50,6 +50,7 @@ export const StyledWebName = styled.p`
     font-weight: bold;
     text-decoration: underline;
     text-decoration-color: ${dogloverTheme.colors.main};
+    font-family: 'Ubuntu';
 `;
 
 export const NavMenu = styled.nav`
