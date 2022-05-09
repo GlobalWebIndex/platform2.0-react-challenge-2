@@ -2,6 +2,11 @@
 
 <br />
 
+# How to run
+npm install
+npm start
+**Note: If you run the project locally, useEffects are called twice. I made some research and it seems this is due to <React.StrictMode>. It does not happen on production.**
+
 # Tech Stack
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
