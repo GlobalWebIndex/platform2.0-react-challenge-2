@@ -1,5 +1,7 @@
+import { Route, Routes } from 'react-router-dom';
 import { SWRConfig } from 'swr';
 import { Layout } from './components/Layout';
+import { RandomDogs } from './components/RandomDogs';
 
 function App() {
   return (
@@ -11,7 +13,9 @@ function App() {
       }}
     >
       <Layout>
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        <Routes>
+          <Route path="/" element={<RandomDogs />} />
+        </Routes>
       </Layout>
     </SWRConfig>
   );
