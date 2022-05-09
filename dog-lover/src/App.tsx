@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { SWRConfig } from 'swr';
 import { DogBreedImages } from './components/DogBreedImages';
 import { DogBreeds } from './components/DogBreeds';
+import { DogSubBreedImages } from './components/DogSubBreedImages';
 import { Layout } from './components/Layout';
 import { RandomDogs } from './components/RandomDogs';
 
@@ -19,6 +20,10 @@ function App() {
           <Route path="/" element={<RandomDogs />} />
           <Route path="/breeds" element={<DogBreeds />} />
           <Route path="/breeds/:breed" element={<DogBreedImages />} />
+          <Route
+            path="/breeds/:breed/:subBreed"
+            element={<DogSubBreedImages />}
+          />
         </Routes>
       </Layout>
     </SWRConfig>
