@@ -1,0 +1,11 @@
+.text_container {
+  width: 80em;
+  background-color: rgba(128, 0, 128, 0.555);
+  color: lightgrey;
+  justify-content: flex;
+  align-items: center;
+}
+
+.scrollArea {
+  height: 250px;
+}
